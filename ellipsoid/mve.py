@@ -163,6 +163,8 @@ class mve(object):
 
             # either for loop or a lot of redundant caluclations (but
             # vectorised)
+            # TODO write customised Matrix Calculation
+            # TODO memory in danger if number of data is large
             X_minus_mean = X - numpy.tile(mean, (self.n_data, 1))
             m_J_squared_array = numpy.diag(
                 X_minus_mean.dot(numpy.linalg.inv(vcov)).dot(X_minus_mean.transpose()))
@@ -190,7 +192,7 @@ class mve(object):
 
         return (self.mean_hat, self.vcov_hat)
 
-    def get_distances(self, X=None):
+    def get_distances(self, X=None, mean_hat=None, vcov_hat=None):
         '''Given center and covariance matrix of an ellispoid, calculates a ranking for data X
 
         Parameters
@@ -205,9 +207,16 @@ class mve(object):
         if X is None:
             X = self.X
 
-        X_minus_mean = X - numpy.tile(self.mean_hat, (len(X), 1))
+        if mean_hat is None:
+            mean_hat = self.mean_hat
 
-        return numpy.diag(X_minus_mean.dot(numpy.linalg.inv(self.vcov_hat)).dot(X_minus_mean.transpose()))
+        if vcov_hat is None:
+            vcov_hat = self.vcov_hat
+
+        X_minus_mean = X - numpy.tile(mean_hat, (len(X), 1))
+        # TODO write customised Matrix Calculation
+        # TODO memory in danger if number of data is large
+        return numpy.diag(X_minus_mean.dot(numpy.linalg.inv(vcov_hat)).dot(X_minus_mean.transpose()))
 
 
 if __name__ == "__main__":

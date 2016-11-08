@@ -31,6 +31,7 @@ setup(
     url='https://github.com/JoeErnst/MVE',
     author='Joe Ernst, Philipp Dufter',
     author_email='joe.m.ernst@gmail.com',
+    author_email='philipp.dufter@gmail.com',
     license='BSD',
     packages=find_packages(exclude=['tests*']),
     install_requires=[
