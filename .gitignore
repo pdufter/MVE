@@ -2,3 +2,4 @@ lit/*
 *.pyc
 archive/*
 ENV/*
+.DS_Store
