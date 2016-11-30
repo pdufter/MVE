@@ -16,6 +16,7 @@ see example1.py
 
 TODO
 -----------
+- take care of memory issues (write custom matrix multiplication for that purpose)
 - add more ways to handle singular covariance matrices
 - add examples to Readme
 - compare to scikit learn libraries
